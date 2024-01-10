@@ -1,0 +1,24 @@
+@import url('https://fonts.googleapis.com/css2?family=Lora:wght@400;500;700&family=Open+Sans:wght@400;500&display=swap');
+
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  border: 0;
+  vertical-align: baseline;
+  list-style: none;
+  text-decoration: none;
+}
+
+:root {
+  --light-color: #FCF5ED;
+  --highlight-color: #F4BF96;
+  --accent-color: #CE5A67;
+  --dark-color: #1F1717;
+}
+  
+body {
+  background-color: var(--light-color);
+  color: var(--dark-color);
+  font-family: 'Open Sans', sans-serif;
+}

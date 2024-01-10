@@ -3,10 +3,18 @@ import PropTypes from "prop-types";
 export default function ProductCard({ product }) {
   return (
     <div className="product-card">
-      <img src={product.image} />
-      <p>{product.title}</p>
+      <div className="img-container">
+        <img src={product.image} className="product-image" />
+      </div>
+      <p>
+        {product.title.length > 35
+          ? product.title.slice(0, 35) + "..."
+          : product.title}
+      </p>
       <p>${product.price}</p>
-      <button type="button">Add to cart</button>
+      <button type="button" className="add-item-button">
+        Add to cart
+      </button>
     </div>
   );
 }
