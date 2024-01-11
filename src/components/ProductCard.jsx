@@ -1,17 +1,21 @@
 import PropTypes from "prop-types";
 
 export default function ProductCard({ product }) {
+  const shortenedTitle = (title, length) =>
+    title.length > length ? title.slice(0, length) + "..." : title;
+
+  const ratingStarts = (rate) => "⭐".repeat(Math.round(rate));
+
   return (
     <div className="product-card">
       <div className="img-container">
         <img src={product.image} className="product-image" />
       </div>
-      <p>
-        {product.title.length > 35
-          ? product.title.slice(0, 35) + "..."
-          : product.title}
-      </p>
-      <p>${product.price}</p>
+      <div className="product-info">
+        <p>{shortenedTitle(product.title, 40)}</p>
+        <p>${product.price}</p>
+        <div className="rating-stars">{ratingStarts(product.rating.rate)}</div>
+      </div>
       <button type="button" className="add-item-button">
         Add to cart
       </button>
