@@ -19,6 +19,7 @@ export default function ProductFilters({
       </label>
       <select name="order-products" id="order-products" onChange={handleOrder}>
         <option value="">Order by:</option>
+        <option value="default">Default</option>
         <option value="low-price">Price low to high</option>
         <option value="high-price">Price high to low</option>
         <option value="rating">Best ratings</option>

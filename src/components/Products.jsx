@@ -10,10 +10,18 @@ export default function Products() {
     fetch("https://fakestoreapi.com/products")
       .then((res) => res.json())
       .then((json) => setProductsList(json));
-  }, [setProductsList, productsList]);
+  }, [setProductsList]);
 
   const handleOrder = (event) => {
-    console.log(event.target.value);
+    event.target.value === "low-price"
+      ? setProductsList([...productsList].sort((a, b) => a.price - b.price))
+      : event.target.value === "high-price"
+      ? setProductsList([...productsList].sort((a, b) => b.price - a.price))
+      : event.target.value === "rating"
+      ? setProductsList(
+          [...productsList].sort((a, b) => b.rating.rate - a.rating.rate)
+        )
+      : setProductsList([...productsList].sort((a, b) => a.id - b.id));
   };
 
   const handleCategorySelection = (event) => {
