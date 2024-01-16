@@ -1,11 +1,7 @@
 import PropTypes from "prop-types";
 import { useState } from "react";
 
-export default function ProductFilters({
-  handleOrder,
-  handleCategorySelection,
-  handleRatingSelection,
-}) {
+export default function ProductFilters({ handleOrder, handleFilters }) {
   const [minPrice, setMinPrice] = useState(0);
 
   const handleMinPrice = (event) => {
@@ -39,7 +35,7 @@ export default function ProductFilters({
           />
           <span>{minPrice}</span>
         </div>
-        <fieldset>
+        <fieldset onChange={handleFilters}>
           <legend>By category:</legend>
           <div className="category-option">
             <input
@@ -47,7 +43,6 @@ export default function ProductFilters({
               name="category-filter"
               id="electronics"
               value="electronics"
-              onChange={handleCategorySelection}
             />
             <label htmlFor="electronics">Electronics</label>
           </div>
@@ -57,9 +52,8 @@ export default function ProductFilters({
               name="category-filter"
               id="jewelry"
               value="jewelery"
-              onChange={handleCategorySelection}
             />
-            <label htmlFor="electronics">Jewelry</label>
+            <label htmlFor="jewelry">Jewelry</label>
           </div>
           <div className="category-option">
             <input
@@ -67,9 +61,8 @@ export default function ProductFilters({
               name="category-filter"
               id="men-clothing"
               value="men's clothing"
-              onChange={handleCategorySelection}
             />
-            <label htmlFor="electronics">Men&apos;s clothing</label>
+            <label htmlFor="men-clothing">Men&apos;s clothing</label>
           </div>
           <div className="category-option">
             <input
@@ -77,12 +70,11 @@ export default function ProductFilters({
               name="category-filter"
               id="women-clothing"
               value="women's clothing"
-              onChange={handleCategorySelection}
             />
-            <label htmlFor="electronics">Women&apos;s clothing</label>
+            <label htmlFor="women-clothing">Women&apos;s clothing</label>
           </div>
         </fieldset>
-        <fieldset>
+        <fieldset onChange={handleFilters}>
           <legend>By rating:</legend>
           <div className="rating-option">
             <input
@@ -90,7 +82,6 @@ export default function ProductFilters({
               name="rating-filter"
               id="five-stars"
               value="5"
-              onChange={handleRatingSelection}
             />
             <label htmlFor="five-stars">{"⭐".repeat(5)}</label>
           </div>
@@ -100,9 +91,8 @@ export default function ProductFilters({
               name="rating-filter"
               id="four-stars"
               value="4"
-              onChange={handleRatingSelection}
             />
-            <label htmlFor="five-stars">{"⭐".repeat(4)}</label>
+            <label htmlFor="four-stars">{"⭐".repeat(4)}</label>
           </div>
           <div className="rating-option">
             <input
@@ -110,9 +100,8 @@ export default function ProductFilters({
               name="rating-filter"
               id="three-stars"
               value="3"
-              onChange={handleRatingSelection}
             />
-            <label htmlFor="five-stars">{"⭐".repeat(3)}</label>
+            <label htmlFor="three-stars">{"⭐".repeat(3)}</label>
           </div>
           <div className="rating-option">
             <input
@@ -120,9 +109,8 @@ export default function ProductFilters({
               name="rating-filter"
               id="two-stars"
               value="2"
-              onChange={handleRatingSelection}
             />
-            <label htmlFor="five-stars">{"⭐".repeat(2)}</label>
+            <label htmlFor="two-stars">{"⭐".repeat(2)}</label>
           </div>
         </fieldset>
       </div>
@@ -132,6 +120,5 @@ export default function ProductFilters({
 
 ProductFilters.propTypes = {
   handleOrder: PropTypes.func,
-  handleCategorySelection: PropTypes.func,
-  handleRatingSelection: PropTypes.func,
+  handleFilters: PropTypes.func,
 };

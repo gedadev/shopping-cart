@@ -5,6 +5,7 @@ import "../styles/products.css";
 
 export default function Products() {
   const [productsList, setProductsList] = useState([]);
+  const [productFilters, setProductFilters] = useState([]);
 
   useEffect(() => {
     fetch("https://fakestoreapi.com/products")
@@ -24,12 +25,21 @@ export default function Products() {
       : setProductsList([...productsList].sort((a, b) => a.id - b.id));
   };
 
-  const handleCategorySelection = (event) => {
-    console.log(event.target.value);
-  };
-
-  const handleRatingSelection = (event) => {
-    console.log(event.target.value);
+  const handleFilters = (event) => {
+    if (!productFilters.includes(event.target.value) && event.target.checked) {
+      setProductFilters([...productFilters, event.target.value]);
+    }
+    if (!event.target.checked) {
+      setProductFilters(
+        [...productFilters]
+          .slice(0, productFilters.indexOf(event.target.value))
+          .concat(
+            [...productFilters].slice(
+              productFilters.indexOf(event.target.value) + 1
+            )
+          )
+      );
+    }
   };
 
   return (
@@ -37,8 +47,7 @@ export default function Products() {
       <div className="product-filters">
         <ProductFilters
           handleOrder={handleOrder}
-          handleCategorySelection={handleCategorySelection}
-          handleRatingSelection={handleRatingSelection}
+          handleFilters={handleFilters}
         />
       </div>
       <div className="products-container">
