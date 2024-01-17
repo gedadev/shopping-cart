@@ -1,11 +1,12 @@
-import Products from "./components/Products";
 import "./styles/App.css";
+import Header from "./components/Header";
+import { Outlet } from "react-router-dom";
 
 function App() {
   return (
     <>
-      <p>Shopping Cart</p>
-      <Products />
+      <Header />
+      <Outlet />
     </>
   );
 }
