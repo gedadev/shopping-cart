@@ -1,0 +1,28 @@
+@import url('https://fonts.googleapis.com/css2?family=Rubik+Burned&display=swap');
+
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: clamp(1000px, 80%, 3000px);
+    margin: 1.5rem auto;
+}
+
+.navbar > ul {
+    display: flex;
+    gap: 2rem;
+    font-size: 1.2rem;
+}
+
+.branding {
+    font-family: 'Rubik Burned', system-ui;
+    font-size: 2.5rem;
+}
+
+.cart-link {
+    margin-right: 2rem;
+}
+
+.nav-link, .cart-link {
+    color: var(--dark-color);
+}
