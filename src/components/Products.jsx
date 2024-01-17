@@ -42,6 +42,8 @@ export default function Products() {
     }
   };
 
+  // Pending to apply the filter by rating
+
   return (
     <div className="products-section">
       <div className="product-filters">
@@ -51,9 +53,13 @@ export default function Products() {
         />
       </div>
       <div className="products-container">
-        {productsList.map((product) => (
-          <ProductCard key={product.id} product={product} />
-        ))}
+        {productsList.map((product) =>
+          productFilters.length === 0 ? (
+            <ProductCard key={product.id} product={product} />
+          ) : productFilters.includes(product.category) ? (
+            <ProductCard key={product.id} product={product} />
+          ) : null
+        )}
       </div>
     </div>
   );
