@@ -1,11 +1,13 @@
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import ProductCard from "./ProductCard";
 import ProductFilters from "./ProductFilters";
 import "../styles/products.css";
+import { ShopContext } from "../App";
 
 export default function Products() {
   const [productsList, setProductsList] = useState([]);
   const [productFilters, setProductFilters] = useState([]);
+  const { addToCart } = useContext(ShopContext);
 
   useEffect(() => {
     fetch("https://fakestoreapi.com/products")
@@ -42,7 +44,7 @@ export default function Products() {
     }
   };
 
-  // Pending to apply the filter by rating
+  // Pending to apply the filter by rating and min price
 
   return (
     <div className="products-section">
@@ -55,7 +57,11 @@ export default function Products() {
       <div className="products-container">
         {productsList.map((product) =>
           productFilters.length === 0 ? (
-            <ProductCard key={product.id} product={product} />
+            <ProductCard
+              key={product.id}
+              product={product}
+              addToCart={addToCart}
+            />
           ) : productFilters.includes(product.category) ? (
             <ProductCard key={product.id} product={product} />
           ) : null

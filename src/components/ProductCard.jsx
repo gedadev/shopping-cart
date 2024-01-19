@@ -1,6 +1,7 @@
 import PropTypes from "prop-types";
+import AddShoppingCartIcon from "@mui/icons-material/AddShoppingCart";
 
-export default function ProductCard({ product }) {
+export default function ProductCard({ product, addToCart }) {
   const shortenedTitle = (title, length) =>
     title.length > length ? title.slice(0, length) + "..." : title;
 
@@ -16,8 +17,12 @@ export default function ProductCard({ product }) {
         <p>${product.price}</p>
         <div className="rating-stars">{ratingStarts(product.rating.rate)}</div>
       </div>
-      <button type="button" className="add-item-button">
-        Add to cart
+      <button
+        type="button"
+        className="add-item-button"
+        onClick={() => addToCart(product)}
+      >
+        <AddShoppingCartIcon />
       </button>
     </div>
   );
@@ -25,4 +30,5 @@ export default function ProductCard({ product }) {
 
 ProductCard.propTypes = {
   product: PropTypes.object,
+  addToCart: PropTypes.func,
 };
