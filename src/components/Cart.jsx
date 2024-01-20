@@ -1,6 +1,7 @@
 import { useContext } from "react";
 import { ShopContext } from "../App";
 import CartItem from "./CartItem";
+import "../styles/cart.css";
 
 export default function Cart() {
   const { cartItems } = useContext(ShopContext);
@@ -16,8 +17,8 @@ export default function Cart() {
 
   return (
     <div className="cart-section">
-      <h2>My cart</h2>
       <div className="cart-container">
+        <h2>My cart</h2>
         {!cartIsEmpty ? (
           cartItems.map((item) => (
             <>
@@ -30,10 +31,10 @@ export default function Cart() {
       </div>
       <div className="checkout-container">
         <div className="checkout">
-          <p>Subtotal: {getSubtotal} </p>
-          <p>Discounts: 0</p>
-          <p>Shipping: 0</p>
-          <p>Taxes: 0</p>
+          <p>Subtotal: $ {getSubtotal.toFixed(2)} </p>
+          <p>Discounts: $ 0</p>
+          <p>Shipping: $ 0</p>
+          <p>Taxes: $ 0</p>
           <p>Total:</p>
         </div>
         <button type="button" className="pay-button">
