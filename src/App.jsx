@@ -11,8 +11,16 @@ export const ShopContext = createContext({
 function App() {
   const [cartItems, setCartItems] = useState([]);
 
-  const addToCart = (product) => {
-    setCartItems([...cartItems, product]);
+  const addToCart = (product, productId) => {
+    const cartObject = cartItems.find(({ id }) => id === productId);
+
+    if (cartItems.includes(cartObject)) {
+      const update = [...cartItems];
+      update[cartItems.indexOf(cartObject)].quantity += 1;
+      setCartItems(update);
+    } else {
+      setCartItems([...cartItems, { ...product, quantity: 1 }]);
+    }
   };
 
   return (
