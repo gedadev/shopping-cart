@@ -29,6 +29,10 @@
     border-radius: 1rem;
 }
 
+.product-card > .quantity-selector {
+    align-self: center;
+}
+
 .img-container {
     max-height: 250px;
     flex-grow: 2;
