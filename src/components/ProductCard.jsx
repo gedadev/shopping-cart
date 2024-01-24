@@ -1,11 +1,22 @@
 import PropTypes from "prop-types";
 import AddShoppingCartIcon from "@mui/icons-material/AddShoppingCart";
+import QuantitySelector from "./QuantitySelector";
+import { ShopContext } from "../App";
+import { useContext } from "react";
 
 export default function ProductCard({ product, addToCart }) {
+  const { cartItems } = useContext(ShopContext);
+
   const shortenedTitle = (title, length) =>
     title.length > length ? title.slice(0, length) + "..." : title;
 
   const ratingStarts = (rate) => "⭐".repeat(Math.round(rate));
+
+  const getProductQuantity = (productId) => {
+    const cartObject = cartItems.find(({ id }) => id === productId);
+
+    if (cartItems.includes(cartObject)) return cartObject.quantity;
+  };
 
   return (
     <div className="product-card">
@@ -20,10 +31,11 @@ export default function ProductCard({ product, addToCart }) {
       <button
         type="button"
         className="add-item-button"
-        onClick={() => addToCart(product)}
+        onClick={() => addToCart(product, product.id)}
       >
         <AddShoppingCartIcon />
       </button>
+      <QuantitySelector quantity={getProductQuantity(product.id)} />
     </div>
   );
 }
