@@ -8,12 +8,8 @@ export default function Cart() {
 
   const cartIsEmpty = cartItems.length > 0 ? false : true;
 
-  const getSubtotal = cartItems.reduce(
-    (subtotal, current) => subtotal + current.price,
-    0
-  );
-
-  console.log(getSubtotal);
+  const getSubtotal = () =>
+    cartItems.reduce((subtotal, current) => subtotal + current.price, 0);
 
   return (
     <div className="cart-section">
@@ -31,7 +27,7 @@ export default function Cart() {
       </div>
       <div className="checkout-container">
         <div className="checkout">
-          <p>Subtotal: $ {getSubtotal.toFixed(2)} </p>
+          <p>Subtotal: $ {getSubtotal().toFixed(2)} </p>
           <p>Discounts: $ 0</p>
           <p>Shipping: $ 0</p>
           <p>Taxes: $ 0</p>

@@ -5,18 +5,12 @@ import { ShopContext } from "../App";
 import { useContext } from "react";
 
 export default function ProductCard({ product, addToCart }) {
-  const { cartItems } = useContext(ShopContext);
+  const { getProductQuantity } = useContext(ShopContext);
 
   const shortenedTitle = (title, length) =>
     title.length > length ? title.slice(0, length) + "..." : title;
 
   const ratingStarts = (rate) => "⭐".repeat(Math.round(rate));
-
-  const getProductQuantity = (productId) => {
-    const cartObject = cartItems.find(({ id }) => id === productId);
-
-    if (cartItems.includes(cartObject)) return cartObject.quantity;
-  };
 
   return (
     <div className="product-card">

@@ -1,17 +1,18 @@
 import PropTypes from "prop-types";
+import QuantitySelector from "./QuantitySelector";
+import { ShopContext } from "../App";
+import { useContext } from "react";
 
 export default function CartItem({ item }) {
+  const { getProductQuantity } = useContext(ShopContext);
+
   return (
     <div className="cart-item">
-      <img src={item.image} alt={item.title} key={item.id} />
+      <img src={item.image} alt={item.title} />
       <div className="item-info">
-        <p key={item.id}>{item.title}</p>
-        <p key={item.id}>$ {item.price}</p>
-        <div className="quantity-selector">
-          <span>-</span>
-          <input type="text" name="" id="" />
-          <span>+</span>
-        </div>
+        <p>{item.title}</p>
+        <p>$ {item.price}</p>
+        <QuantitySelector quantity={getProductQuantity(item.id)} />
       </div>
     </div>
   );

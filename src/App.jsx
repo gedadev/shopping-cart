@@ -6,6 +6,7 @@ import { useState, createContext } from "react";
 export const ShopContext = createContext({
   cartItems: [],
   addToCart: () => {},
+  getProductQuantity: () => {},
 });
 
 function App() {
@@ -23,9 +24,17 @@ function App() {
     }
   };
 
+  const getProductQuantity = (productId) => {
+    const cartObject = cartItems.find(({ id }) => id === productId);
+
+    if (cartItems.includes(cartObject)) return cartObject.quantity;
+  };
+
   return (
     <>
-      <ShopContext.Provider value={{ cartItems, addToCart }}>
+      <ShopContext.Provider
+        value={{ cartItems, addToCart, getProductQuantity }}
+      >
         <Header />
         <Outlet />
       </ShopContext.Provider>
