@@ -29,12 +29,12 @@ export default function Header() {
           </li>
         </ul>
       </nav>
-      <div className="cart-icon">
-        <span>{getNumberOfProducts()}</span>
+      <div className="cart-icon-container">
+        <span className="cart-products">{getNumberOfProducts()}</span>
         <Link className="cart-link" to="cart">
           <ShoppingCartIcon style={{ fontSize: "2rem" }} />
         </Link>
-        <span>{getSubtotal().toFixed(2)}</span>
+        <span className="cart-price">{`$${getSubtotal().toFixed(2)}`}</span>
       </div>
     </header>
   );

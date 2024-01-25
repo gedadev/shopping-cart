@@ -20,9 +20,33 @@
 }
 
 .cart-link {
-    margin-right: 2rem;
+    display: flex;
 }
 
 .nav-link, .cart-link {
     color: var(--dark-color);
+}
+
+.cart-icon-container {
+    margin-right: 2rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.cart-products {
+    position: absolute;
+    top: 1.2rem;
+    margin-left: 1rem;
+    color: var(--light-color);
+    background-color: var(--accent-color);
+    border-radius: 50%;
+    font-size: 0.8rem;
+    width: 1.2rem;
+    height: 1.2rem;
+    text-align: center;
+}
+
+.cart-price {
+    font-size: 0.6rem;
 }
