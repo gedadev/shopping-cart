@@ -7,6 +7,8 @@ export const ShopContext = createContext({
   cartItems: [],
   addToCart: () => {},
   getProductQuantity: () => {},
+  getNumberOfProducts: () => {},
+  getSubtotal: () => {},
 });
 
 function App() {
@@ -30,10 +32,28 @@ function App() {
     if (cartItems.includes(cartObject)) return cartObject.quantity;
   };
 
+  const getNumberOfProducts = () =>
+    cartItems.reduce(
+      (numberOfProducts, current) => numberOfProducts + current.quantity,
+      0
+    );
+
+  const getSubtotal = () =>
+    cartItems.reduce(
+      (subtotal, current) => subtotal + current.price * current.quantity,
+      0
+    );
+
   return (
     <>
       <ShopContext.Provider
-        value={{ cartItems, addToCart, getProductQuantity }}
+        value={{
+          cartItems,
+          addToCart,
+          getProductQuantity,
+          getNumberOfProducts,
+          getSubtotal,
+        }}
       >
         <Header />
         <Outlet />
