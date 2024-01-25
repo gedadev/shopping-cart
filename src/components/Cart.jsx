@@ -4,12 +4,9 @@ import CartItem from "./CartItem";
 import "../styles/cart.css";
 
 export default function Cart() {
-  const { cartItems } = useContext(ShopContext);
+  const { cartItems, getSubtotal } = useContext(ShopContext);
 
   const cartIsEmpty = cartItems.length > 0 ? false : true;
-
-  const getSubtotal = () =>
-    cartItems.reduce((subtotal, current) => subtotal + current.price, 0);
 
   return (
     <div className="cart-section">
