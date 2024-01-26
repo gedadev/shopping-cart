@@ -4,8 +4,8 @@ import QuantitySelector from "./QuantitySelector";
 import { ShopContext } from "../App";
 import { useContext } from "react";
 
-export default function ProductCard({ product, addToCart }) {
-  const { getProductQuantity } = useContext(ShopContext);
+export default function ProductCard({ product }) {
+  const { getProductQuantity, addToCart } = useContext(ShopContext);
 
   const shortenedTitle = (title, length) =>
     title.length > length ? title.slice(0, length) + "..." : title;
@@ -29,12 +29,14 @@ export default function ProductCard({ product, addToCart }) {
       >
         <AddShoppingCartIcon />
       </button>
-      <QuantitySelector quantity={getProductQuantity(product.id)} />
+      <QuantitySelector
+        quantity={getProductQuantity(product.id)}
+        product={product}
+      />
     </div>
   );
 }
 
 ProductCard.propTypes = {
   product: PropTypes.object,
-  addToCart: PropTypes.func,
 };

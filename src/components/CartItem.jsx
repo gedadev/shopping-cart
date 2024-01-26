@@ -12,7 +12,10 @@ export default function CartItem({ item }) {
       <div className="item-info">
         <p>{item.title}</p>
         <p>$ {item.price}</p>
-        <QuantitySelector quantity={getProductQuantity(item.id)} />
+        <QuantitySelector
+          quantity={getProductQuantity(item.id)}
+          product={item}
+        />
       </div>
     </div>
   );
