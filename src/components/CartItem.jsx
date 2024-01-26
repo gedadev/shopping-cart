@@ -1,6 +1,6 @@
 import PropTypes from "prop-types";
 import QuantitySelector from "./QuantitySelector";
-import { ShopContext } from "../App";
+import { ShopContext } from "../ContextProvider";
 import { useContext } from "react";
 
 export default function CartItem({ item }) {

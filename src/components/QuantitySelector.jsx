@@ -1,5 +1,5 @@
 import PropTypes from "prop-types";
-import { ShopContext } from "../App";
+import { ShopContext } from "../ContextProvider";
 import { useContext } from "react";
 
 export default function QuantitySelector({ quantity = 0, product }) {

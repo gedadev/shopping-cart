@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
 import "../styles/header.css";
-import { ShopContext } from "../App";
+import { ShopContext } from "../ContextProvider";
 import { useContext } from "react";
 
 export default function Header() {
