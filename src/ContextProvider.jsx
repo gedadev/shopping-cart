@@ -18,6 +18,23 @@ export default function ContextProvider({ children }) {
     }
   };
 
+  const removeItem = (productId) => {
+    const cartObject = cartItems.find(({ id }) => id === productId);
+
+    if (cartItems.includes(cartObject)) {
+      if (cartObject.quantity > 1) {
+        const update = [...cartItems];
+        update[cartItems.indexOf(cartObject)].quantity -= 1;
+        setCartItems(update);
+      } else {
+        const update = cartItems
+          .slice(0, cartItems.indexOf(cartObject))
+          .concat(cartItems.slice(cartItems.indexOf(cartObject) + 1));
+        setCartItems(update);
+      }
+    }
+  };
+
   const getProductQuantity = (productId) => {
     const cartObject = cartItems.find(({ id }) => id === productId);
 
@@ -44,6 +61,7 @@ export default function ContextProvider({ children }) {
         getProductQuantity,
         getNumberOfProducts,
         getSubtotal,
+        removeItem,
       }}
     >
       {children}
