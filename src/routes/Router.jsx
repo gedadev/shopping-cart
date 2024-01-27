@@ -3,6 +3,7 @@ import Products from "../components/Products";
 import Cart from "../components/Cart";
 import App from "../App";
 import Home from "../components/Home";
+import Contact from "../components/Contact";
 
 export default function Router() {
   const router = createBrowserRouter([
@@ -21,6 +22,10 @@ export default function Router() {
         {
           path: "cart",
           element: <Cart />,
+        },
+        {
+          path: "contact",
+          element: <Contact />,
         },
       ],
     },
