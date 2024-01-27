@@ -6,6 +6,7 @@ import shippingBanner from "../assets/free-shipping-banner.png";
 import "../styles/home.css";
 import { useEffect } from "react";
 import { useState } from "react";
+import ProductCard from "./ProductCard";
 
 export default function Home() {
   const images = [
@@ -37,7 +38,14 @@ export default function Home() {
         showBullets={true}
         showFullscreenButton={false}
       />
-      <div className="top-products">{console.log(topProducts)}</div>
+      <div className="top-products">
+        <h2>Check our Top products</h2>
+        <div className="top-products-container">
+          {topProducts.map((product) => (
+            <ProductCard product={product} key={product.id} />
+          ))}
+        </div>
+      </div>
       <div className="categories">{console.log(categories)}</div>
     </div>
   );

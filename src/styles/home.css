@@ -2,3 +2,15 @@
     max-width: clamp(1000px, 80%, 3000px);
     margin: auto;
 }
+
+.top-products {
+    max-width: clamp(1000px, 80%, 3000px);
+    margin: 10vh auto;
+}
+
+.top-products-container {
+    margin: 1rem auto;
+    display: flex;
+    flex-grow: 1;
+    justify-content: space-between;
+}
