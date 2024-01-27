@@ -1,12 +1,17 @@
 import ImageGallery from "react-image-gallery";
 import "react-image-gallery/styles/css/image-gallery.css";
-import fashionBanner from "../assets/casual-fashion-banner.png";
-import saleBanner from "../assets/sale-banner.png";
-import shippingBanner from "../assets/free-shipping-banner.png";
+import fashionBanner from "../assets/banners/casual-fashion-banner.png";
+import saleBanner from "../assets/banners/sale-banner.png";
+import shippingBanner from "../assets/banners/free-shipping-banner.png";
 import "../styles/home.css";
 import { useEffect } from "react";
 import { useState } from "react";
 import ProductCard from "./ProductCard";
+import CategoryCard from "./CategoryCard";
+import electronicsImg from "../assets/categories-images/electronics-category.png";
+import jewelryImg from "../assets/categories-images/jewelry-category.png";
+import menImg from "../assets/categories-images/men-category.png";
+import womenImg from "../assets/categories-images/women-category.png";
 
 export default function Home() {
   const images = [
@@ -27,7 +32,14 @@ export default function Home() {
       });
     fetch("https://fakestoreapi.com/products/categories")
       .then((res) => res.json())
-      .then((json) => setCategories(json));
+      .then((json) => {
+        const catImages = [electronicsImg, jewelryImg, menImg, womenImg];
+        const catArray = json.map((category, index) => ({
+          title: category,
+          image: catImages[index],
+        }));
+        setCategories(catArray);
+      });
   }, []);
 
   return (
@@ -46,7 +58,14 @@ export default function Home() {
           ))}
         </div>
       </div>
-      <div className="categories">{console.log(categories)}</div>
+      <div className="categories">
+        <h2>Browse our categories</h2>
+        <div className="categories-container">
+          {categories.map((category) => (
+            <CategoryCard category={category} key={category} />
+          ))}
+        </div>
+      </div>
     </div>
   );
 }
