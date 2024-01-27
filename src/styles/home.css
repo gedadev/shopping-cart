@@ -1,0 +1,4 @@
+.image-gallery {
+    max-width: clamp(1000px, 80%, 3000px);
+    margin: auto;
+}
