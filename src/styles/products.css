@@ -62,7 +62,7 @@
     justify-self: end;
 }
 
-.add-item-button, .pay-button {
+.add-item-button, .pay-button, .send-message-button {
     align-self: center;
     width: 50%;
     height: 2.5rem;
@@ -73,7 +73,7 @@
     transition: box-shadow 0.2s, color 0.2s;
 }
 
-.add-item-button:hover, .pay-button:hover {
+.add-item-button:hover, .pay-button:hover, .send-message-button:hover {
     color: var(--dark-color);
     box-shadow: 0px 0px 8px var(--dark-color);
 }

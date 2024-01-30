@@ -1,0 +1,33 @@
+.contact-section {
+    max-width: clamp(1000px, 80%, 3000px);
+    margin: auto;
+    min-height: 60vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 2rem;
+}
+
+.form-container {
+    display: flex;
+    flex-direction: column;
+    gap: 1.2rem;
+}
+
+.form-item {
+    font-size: 0.9rem;
+    display: grid;
+    grid-template-columns: 1fr 3fr;
+    gap: 1rem;
+}
+
+.form-item > input, textarea {
+    font-family: 'Open Sans', sans-serif;
+    outline: none;
+    resize: none;
+    border-radius: 0.8rem;
+    background-color: var(--light-color);
+    border: 1px solid var(--accent-color);
+    padding: 0.5rem;
+}
