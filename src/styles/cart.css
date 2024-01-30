@@ -2,7 +2,7 @@
     display: flex;
     max-width: clamp(1000px, 80%, 3000px);
     min-height: 80vh;
-    margin: auto;
+    margin: 10vh auto 0;
 }
 
 .cart-container {

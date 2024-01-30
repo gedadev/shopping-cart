@@ -1,12 +1,13 @@
 .contact-section {
     max-width: clamp(1000px, 80%, 3000px);
     margin: auto;
-    min-height: 80vh;
+    min-height: 78vh;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
     gap: 2rem;
+    margin-top: 10vh;
 }
 
 .form-container {

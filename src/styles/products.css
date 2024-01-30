@@ -3,6 +3,7 @@
     min-height: 80vh;
     margin: auto;
     display: flex;
+    margin-top: 10vh;
 }
 
 .product-filters {
