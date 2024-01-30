@@ -1,7 +1,7 @@
 .contact-section {
     max-width: clamp(1000px, 80%, 3000px);
     margin: auto;
-    min-height: 60vh;
+    min-height: 80vh;
     display: flex;
     flex-direction: column;
     align-items: center;

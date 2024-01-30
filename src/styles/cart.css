@@ -1,7 +1,7 @@
 .cart-section {
     display: flex;
-    /* flex-grow: 1; */
     max-width: clamp(1000px, 80%, 3000px);
+    min-height: 80vh;
     margin: auto;
 }
 
