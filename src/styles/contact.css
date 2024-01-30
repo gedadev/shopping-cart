@@ -31,3 +31,14 @@
     border: 1px solid var(--accent-color);
     padding: 0.5rem;
 }
+
+.sent-confirmation-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 2rem;
+}
+
+.return-button {
+    min-width: 200px;
+}
