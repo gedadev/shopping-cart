@@ -1,23 +1,25 @@
 import ImageGallery from "react-image-gallery";
 import "react-image-gallery/styles/css/image-gallery.css";
-import fashionBanner from "../assets/banners/casual-fashion-banner.png";
-import saleBanner from "../assets/banners/sale-banner.png";
-import shippingBanner from "../assets/banners/free-shipping-banner.png";
 import "../styles/home.css";
 import { useEffect } from "react";
 import { useState } from "react";
 import ProductCard from "./ProductCard";
 import CategoryCard from "./CategoryCard";
-import electronicsImg from "../assets/categories-images/electronics-category.png";
-import jewelryImg from "../assets/categories-images/jewelry-category.png";
-import menImg from "../assets/categories-images/men-category.png";
-import womenImg from "../assets/categories-images/women-category.png";
 
 export default function Home() {
   const images = [
-    { original: fashionBanner },
-    { original: saleBanner },
-    { original: shippingBanner },
+    {
+      original:
+        "https://live.staticflickr.com/65535/53499605365_5e7309128e_k.jpg",
+    },
+    {
+      original:
+        "https://live.staticflickr.com/65535/53498300362_53ab8cbdfe_k.jpg",
+    },
+    {
+      original:
+        "https://live.staticflickr.com/65535/53499489784_8e5205a530_k.jpg",
+    },
   ];
 
   const [topProducts, setTopProducts] = useState([]);
@@ -33,7 +35,12 @@ export default function Home() {
     fetch("https://fakestoreapi.com/products/categories")
       .then((res) => res.json())
       .then((json) => {
-        const catImages = [electronicsImg, jewelryImg, menImg, womenImg];
+        const catImages = [
+          "https://live.staticflickr.com/65535/53499615155_773e8b8acf_m.jpg",
+          "https://live.staticflickr.com/65535/53499348663_cf817a7359_m.jpg",
+          "https://live.staticflickr.com/65535/53498310607_5bbf75001c_m.jpg",
+          "https://live.staticflickr.com/65535/53499348653_e48ddc633f_m.jpg",
+        ];
         const catArray = json.map((category, index) => ({
           title: category,
           image: catImages[index],
