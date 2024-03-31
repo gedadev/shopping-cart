@@ -26,6 +26,7 @@
     justify-content: space-between;
     gap: 0.8rem;
     width: 250px;
+    max-height: 500px;
     background-color: var(--highlight-color);
     padding: 1rem;
     border-radius: 1rem;

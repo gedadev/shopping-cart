@@ -8,14 +8,25 @@ export default function Products() {
   const { productList } = useContext(ShopContext);
   const [filteredProducts, setFilteredProducts] = useState([]);
   const [filters, setFilters] = useState({
-    price: "",
+    price: "0",
     category: [],
     rating: [],
   });
 
   useEffect(() => {
-    setFilteredProducts(productList);
-  }, [productList]);
+    const update = productList.filter((product) => {
+      const categoryFilter =
+        filters.category.includes(product.category) ||
+        filters.category.length === 0;
+      const ratingFilter =
+        filters.rating.includes(String(Math.round(product.rating.rate))) ||
+        filters.rating.length === 0;
+      const priceFilter = product.price > Number(filters.price);
+
+      return categoryFilter && ratingFilter && priceFilter;
+    });
+    setFilteredProducts(update);
+  }, [filters, productList]);
 
   const handleOrder = (event) => {
     const value = event.target.value;
