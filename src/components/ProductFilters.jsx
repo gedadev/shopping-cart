@@ -6,6 +6,7 @@ export default function ProductFilters({ handleOrder, handleFilters }) {
 
   const handleMinPrice = (event) => {
     setMinPrice(event.target.value);
+    handleFilters(event);
   };
 
   return (
@@ -23,10 +24,10 @@ export default function ProductFilters({ handleOrder, handleFilters }) {
       <div className="filters">
         <h3>Filters:</h3>
         <div className="price-filter">
-          <label htmlFor="price-filter">Minimum price</label>
+          <label htmlFor="price-filter">Minimum price:</label>
           <input
             type="range"
-            name="price-filter"
+            name="price"
             id="price-filter"
             min="0"
             max="900"
@@ -40,7 +41,7 @@ export default function ProductFilters({ handleOrder, handleFilters }) {
           <div className="category-option">
             <input
               type="checkbox"
-              name="category-filter"
+              name="category"
               id="electronics"
               value="electronics"
             />
@@ -49,7 +50,7 @@ export default function ProductFilters({ handleOrder, handleFilters }) {
           <div className="category-option">
             <input
               type="checkbox"
-              name="category-filter"
+              name="category"
               id="jewelry"
               value="jewelery"
             />
@@ -58,7 +59,7 @@ export default function ProductFilters({ handleOrder, handleFilters }) {
           <div className="category-option">
             <input
               type="checkbox"
-              name="category-filter"
+              name="category"
               id="men-clothing"
               value="men's clothing"
             />
@@ -67,7 +68,7 @@ export default function ProductFilters({ handleOrder, handleFilters }) {
           <div className="category-option">
             <input
               type="checkbox"
-              name="category-filter"
+              name="category"
               id="women-clothing"
               value="women's clothing"
             />
@@ -77,39 +78,19 @@ export default function ProductFilters({ handleOrder, handleFilters }) {
         <fieldset onChange={handleFilters}>
           <legend>By rating:</legend>
           <div className="rating-option">
-            <input
-              type="checkbox"
-              name="rating-filter"
-              id="five-stars"
-              value="5"
-            />
+            <input type="checkbox" name="rating" id="five-stars" value="5" />
             <label htmlFor="five-stars">{"⭐".repeat(5)}</label>
           </div>
           <div className="rating-option">
-            <input
-              type="checkbox"
-              name="rating-filter"
-              id="four-stars"
-              value="4"
-            />
+            <input type="checkbox" name="rating" id="four-stars" value="4" />
             <label htmlFor="four-stars">{"⭐".repeat(4)}</label>
           </div>
           <div className="rating-option">
-            <input
-              type="checkbox"
-              name="rating-filter"
-              id="three-stars"
-              value="3"
-            />
+            <input type="checkbox" name="rating" id="three-stars" value="3" />
             <label htmlFor="three-stars">{"⭐".repeat(3)}</label>
           </div>
           <div className="rating-option">
-            <input
-              type="checkbox"
-              name="rating-filter"
-              id="two-stars"
-              value="2"
-            />
+            <input type="checkbox" name="rating" id="two-stars" value="2" />
             <label htmlFor="two-stars">{"⭐".repeat(2)}</label>
           </div>
         </fieldset>

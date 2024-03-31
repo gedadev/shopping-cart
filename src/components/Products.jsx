@@ -6,6 +6,11 @@ import "../styles/products.css";
 export default function Products() {
   const [productsList, setProductsList] = useState([]);
   const [productFilters, setProductFilters] = useState([]);
+  const [filters, setFilters] = useState({
+    price: "",
+    category: [],
+    rating: [],
+  });
 
   useEffect(() => {
     fetch("https://fakestoreapi.com/products")
@@ -26,23 +31,22 @@ export default function Products() {
   };
 
   const handleFilters = (event) => {
-    if (!productFilters.includes(event.target.value) && event.target.checked) {
-      setProductFilters([...productFilters, event.target.value]);
-    }
-    if (!event.target.checked) {
-      setProductFilters(
-        [...productFilters]
-          .slice(0, productFilters.indexOf(event.target.value))
-          .concat(
-            [...productFilters].slice(
-              productFilters.indexOf(event.target.value) + 1
-            )
-          )
-      );
+    const { name, value } = event.target;
+
+    if (filters[name].includes(value)) {
+      const update = {
+        ...filters,
+        [name]: filters[name].filter((item) => item !== value),
+      };
+      setFilters(update);
+    } else if (name === "price") {
+      const update = { ...filters, [name]: value };
+      setFilters(update);
+    } else {
+      const update = { ...filters, [name]: [...filters[name], value] };
+      setFilters(update);
     }
   };
-
-  // Pending to apply the filter by rating and min price
 
   return (
     <div className="products-section">
