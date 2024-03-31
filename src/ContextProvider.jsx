@@ -1,10 +1,24 @@
-import { createContext, useState } from "react";
+import { createContext, useEffect, useState } from "react";
 import PropTypes from "prop-types";
+import axios from "axios";
 
 export const ShopContext = createContext();
 
 export default function ContextProvider({ children }) {
   const [cartItems, setCartItems] = useState([]);
+  const [productList, setProductList] = useState([]);
+
+  useEffect(() => {
+    const getProducts = async () => {
+      try {
+        const response = await axios.get("https://fakestoreapi.com/products");
+        setProductList(response.data);
+      } catch (error) {
+        console.log(error);
+      }
+    };
+    getProducts();
+  }, []);
 
   const addToCart = (product, productId) => {
     const cartObject = cartItems.find(({ id }) => id === productId);
@@ -62,6 +76,7 @@ export default function ContextProvider({ children }) {
         getNumberOfProducts,
         getSubtotal,
         removeItem,
+        productList,
       }}
     >
       {children}

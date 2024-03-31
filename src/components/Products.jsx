@@ -1,11 +1,12 @@
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import ProductCard from "./ProductCard";
 import ProductFilters from "./ProductFilters";
 import "../styles/products.css";
+import { ShopContext } from "../ContextProvider";
 
 export default function Products() {
-  const [productsList, setProductsList] = useState([]);
-  const [productFilters, setProductFilters] = useState([]);
+  const { productList } = useContext(ShopContext);
+  const [filteredProducts, setFilteredProducts] = useState([]);
   const [filters, setFilters] = useState({
     price: "",
     category: [],
@@ -13,21 +14,25 @@ export default function Products() {
   });
 
   useEffect(() => {
-    fetch("https://fakestoreapi.com/products")
-      .then((res) => res.json())
-      .then((json) => setProductsList(json));
-  }, [setProductsList]);
+    setFilteredProducts(productList);
+  }, [productList]);
 
   const handleOrder = (event) => {
-    event.target.value === "low-price"
-      ? setProductsList([...productsList].sort((a, b) => a.price - b.price))
-      : event.target.value === "high-price"
-      ? setProductsList([...productsList].sort((a, b) => b.price - a.price))
-      : event.target.value === "rating"
-      ? setProductsList(
-          [...productsList].sort((a, b) => b.rating.rate - a.rating.rate)
+    const value = event.target.value;
+
+    value === "low-price"
+      ? setFilteredProducts(
+          [...filteredProducts].sort((a, b) => a.price - b.price)
         )
-      : setProductsList([...productsList].sort((a, b) => a.id - b.id));
+      : value === "high-price"
+      ? setFilteredProducts(
+          [...filteredProducts].sort((a, b) => b.price - a.price)
+        )
+      : value === "rating"
+      ? setFilteredProducts(
+          [...filteredProducts].sort((a, b) => b.rating.rate - a.rating.rate)
+        )
+      : setFilteredProducts([...filteredProducts].sort((a, b) => a.id - b.id));
   };
 
   const handleFilters = (event) => {
@@ -57,13 +62,10 @@ export default function Products() {
         />
       </div>
       <div className="products-container">
-        {productsList.map((product) =>
-          productFilters.length === 0 ? (
+        {productList &&
+          filteredProducts.map((product) => (
             <ProductCard key={product.id} product={product} />
-          ) : productFilters.includes(product.category) ? (
-            <ProductCard key={product.id} product={product} />
-          ) : null
-        )}
+          ))}
       </div>
     </div>
   );
