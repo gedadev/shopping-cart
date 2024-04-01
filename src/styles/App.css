@@ -17,7 +17,7 @@
   --dark-color: #1F1717;
 }
   
-body {
+body, a:visited {
   background-color: var(--light-color);
   color: var(--dark-color);
   font-family: 'Open Sans', sans-serif;
