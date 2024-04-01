@@ -36,10 +36,10 @@ export default function Home() {
       .then((res) => res.json())
       .then((json) => {
         const catImages = [
-          "https://live.staticflickr.com/65535/53499615155_773e8b8acf_m.jpg",
-          "https://live.staticflickr.com/65535/53499348663_cf817a7359_m.jpg",
-          "https://live.staticflickr.com/65535/53498310607_5bbf75001c_m.jpg",
-          "https://live.staticflickr.com/65535/53499348653_e48ddc633f_m.jpg",
+          "https://i.imgur.com/d5ftSoB.png",
+          "https://i.imgur.com/bzfdazR.png",
+          "https://i.imgur.com/1JD4dip.png",
+          "https://i.imgur.com/9Hcrym1.png",
         ];
         const catArray = json.map((category, index) => ({
           title: category,
