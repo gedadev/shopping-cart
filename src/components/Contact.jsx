@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import "../styles/contact.css";
 import { Link } from "react-router-dom";
 import MailOutlineIcon from "@mui/icons-material/MailOutline";
@@ -15,6 +15,16 @@ export default function Contact() {
     message: "",
   });
   const [sentConfirmation, setSentConfirmation] = useState(false);
+  const [submitDisabled, setSubmitDisabled] = useState(false);
+
+  useEffect(() => {
+    const filledForm = Object.values(formData).reduce(
+      (acc, value) => String(value).trim() !== "" && acc,
+      true
+    );
+
+    setSubmitDisabled(filledForm);
+  }, [formData]);
 
   const handleInput = (e) => {
     const { name, value } = e.target;
@@ -82,7 +92,11 @@ export default function Contact() {
                 onChange={handleInput}
               />
             </div>
-            <button type="submit" className="send-message-button">
+            <button
+              type="submit"
+              className="send-message-button"
+              disabled={!submitDisabled}
+            >
               Send
             </button>
           </form>
