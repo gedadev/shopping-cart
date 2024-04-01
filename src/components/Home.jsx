@@ -1,10 +1,11 @@
 import ImageGallery from "react-image-gallery";
 import "react-image-gallery/styles/css/image-gallery.css";
 import "../styles/home.css";
-import { useEffect } from "react";
+import { useContext, useEffect } from "react";
 import { useState } from "react";
 import ProductCard from "./ProductCard";
 import CategoryCard from "./CategoryCard";
+import { ShopContext } from "../ContextProvider";
 
 export default function Home() {
   const images = [
@@ -24,30 +25,30 @@ export default function Home() {
 
   const [topProducts, setTopProducts] = useState([]);
   const [categories, setCategories] = useState([]);
+  const { productList } = useContext(ShopContext);
 
   useEffect(() => {
-    fetch("https://fakestoreapi.com/products")
-      .then((res) => res.json())
-      .then((json) => {
-        const sorted = json.sort((a, b) => b.rating.rate - a.rating.rate);
-        setTopProducts(sorted.slice(0, 5));
-      });
+    const sortedProducts = productList.sort(
+      (a, b) => b.rating.rate - a.rating.rate
+    );
+    setTopProducts(sortedProducts.slice(0, 5));
+
     fetch("https://fakestoreapi.com/products/categories")
       .then((res) => res.json())
       .then((json) => {
-        const catImages = [
+        const categoriesImages = [
           "https://i.imgur.com/d5ftSoB.png",
           "https://i.imgur.com/bzfdazR.png",
           "https://i.imgur.com/1JD4dip.png",
           "https://i.imgur.com/9Hcrym1.png",
         ];
-        const catArray = json.map((category, index) => ({
+        const categoriesArray = json.map((category, index) => ({
           title: category,
-          image: catImages[index],
+          image: categoriesImages[index],
         }));
-        setCategories(catArray);
+        setCategories(categoriesArray);
       });
-  }, []);
+  }, [productList]);
 
   return (
     <div className="home-section">
