@@ -8,7 +8,12 @@ export default function QuantitySelector({ quantity = 0, product }) {
   return (
     <div className="quantity-selector">
       <span onClick={() => removeItem(product.id)}>-</span>
-      <input type="text" value={quantity} />
+      <input
+        type="text"
+        value={quantity}
+        onChange={() => {}}
+        name="product-quantity"
+      />
       <span onClick={() => addToCart(product, product.id)}>+</span>
     </div>
   );
