@@ -6,6 +6,8 @@ import { useState } from "react";
 import ProductCard from "./ProductCard";
 import CategoryCard from "./CategoryCard";
 import { ShopContext } from "../ContextProvider";
+import axios from "axios";
+import { v4 as uuidv4 } from "uuid";
 
 export default function Home() {
   const images = [
@@ -33,21 +35,31 @@ export default function Home() {
     );
     setTopProducts(sortedProducts.slice(0, 5));
 
-    fetch("https://fakestoreapi.com/products/categories")
-      .then((res) => res.json())
-      .then((json) => {
+    const getCategories = async () => {
+      try {
+        const response = await axios.get(
+          "https://fakestoreapi.com/products/categories"
+        );
         const categoriesImages = [
           "https://i.imgur.com/d5ftSoB.png",
           "https://i.imgur.com/bzfdazR.png",
           "https://i.imgur.com/1JD4dip.png",
           "https://i.imgur.com/9Hcrym1.png",
         ];
-        const categoriesArray = json.map((category, index) => ({
-          title: category,
-          image: categoriesImages[index],
-        }));
-        setCategories(categoriesArray);
-      });
+        const update = response.data.map((category, i) => {
+          return {
+            id: uuidv4(),
+            title: category,
+            image: categoriesImages[i],
+          };
+        });
+        setCategories(update);
+      } catch (error) {
+        console.log(error);
+      }
+    };
+
+    getCategories();
   }, [productList]);
 
   return (
@@ -70,7 +82,7 @@ export default function Home() {
         <h2>Browse our categories</h2>
         <div className="categories-container">
           {categories.map((category) => (
-            <CategoryCard category={category} key={category} />
+            <CategoryCard category={category} key={category.id} />
           ))}
         </div>
       </div>
