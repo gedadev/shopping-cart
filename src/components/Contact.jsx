@@ -18,12 +18,14 @@ export default function Contact() {
   const [submitDisabled, setSubmitDisabled] = useState(false);
 
   useEffect(() => {
+    const emailPattern = /[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}/;
+    const validEmail = () => emailPattern.test(formData.email);
     const filledForm = Object.values(formData).reduce(
       (acc, value) => String(value).trim() !== "" && acc,
       true
     );
 
-    setSubmitDisabled(filledForm);
+    setSubmitDisabled(filledForm && validEmail());
   }, [formData]);
 
   const handleInput = (e) => {
