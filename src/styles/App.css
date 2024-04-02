@@ -23,6 +23,10 @@ body, a:visited {
   font-family: 'Open Sans', sans-serif;
 }
 
+a {
+  color: var(--dark-color);
+}
+
 button:disabled {
   background-color: var(--light-color);
   color: var(--accent-color);

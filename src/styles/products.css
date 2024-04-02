@@ -57,7 +57,7 @@
     align-items: center;
 }
 
-.product-info > p:first-child {
+.product-info > a {
     grid-column: 1 / 3;
 }
 

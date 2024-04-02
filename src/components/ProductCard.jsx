@@ -3,6 +3,7 @@ import AddShoppingCartIcon from "@mui/icons-material/AddShoppingCart";
 import QuantitySelector from "./QuantitySelector";
 import { ShopContext } from "../ContextProvider";
 import { useContext } from "react";
+import { Link } from "react-router-dom";
 
 export default function ProductCard({ product }) {
   const { getProductQuantity, addToCart } = useContext(ShopContext);
@@ -18,7 +19,9 @@ export default function ProductCard({ product }) {
         <img src={product.image} className="product-image" />
       </div>
       <div className="product-info">
-        <p>{shortenedTitle(product.title, 40)}</p>
+        <Link to={`${product.id}`}>
+          <p>{shortenedTitle(product.title, 40)}</p>
+        </Link>
         <p>${product.price}</p>
         <div className="rating-stars">{ratingStarts(product.rating.rate)}</div>
       </div>
