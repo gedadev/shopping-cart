@@ -4,8 +4,9 @@ import Cart from "../components/Cart";
 import App from "../App";
 import Home from "../components/Home";
 import Contact from "../components/Contact";
+import ProductView from "../components/ProductView";
 
-export default function Router() {
+export default function Router1() {
   const router = createBrowserRouter([
     {
       path: "/",
@@ -18,6 +19,10 @@ export default function Router() {
         {
           path: "products",
           element: <Products />,
+        },
+        {
+          path: "/products/:id",
+          element: <ProductView />,
         },
         {
           path: "cart",
