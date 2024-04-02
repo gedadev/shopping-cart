@@ -1,0 +1,30 @@
+.product-view {
+    max-width: clamp(500px, 80%, 1000px);
+    min-height: 78vh;
+    margin: 10vh auto 0;
+}
+
+.product-container {
+    background: var(--highlight-color);
+    border-radius: 0.2rem;
+    box-shadow: 0 0 10px var(--accent-color);
+    display: flex;
+}
+
+.product-container img {
+    max-width: 400px;
+    height: auto;
+    margin: 4rem 2rem;
+    border-radius: 1rem;
+}
+
+.product-details {
+    margin: 2rem 5rem;
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+}
+
+.product-details .quantity-selector {
+    align-self: center;
+}
