@@ -10,6 +10,12 @@
     min-width: 250px;
     background-color: var(--highlight-color);
     border-radius: 1rem;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 1rem;
+    padding: 1.5rem;
+    font-size: 0.85rem;
 }
 
 .products-container {
@@ -65,7 +71,7 @@
     justify-self: end;
 }
 
-.add-item-button, .pay-button, .send-message-button, .return-button {
+.add-item-button, .pay-button, .send-message-button, .return-button, .close-modal-button {
     align-self: center;
     width: 50%;
     height: 2.5rem;
@@ -76,18 +82,9 @@
     transition: box-shadow 0.2s, color 0.2s;
 }
 
-.add-item-button:hover, .pay-button:hover, .send-message-button:hover, .return-button:hover {
+.add-item-button:hover, .pay-button:hover, .send-message-button:hover, .return-button:hover, .close-modal-button:hover {
     color: var(--dark-color);
     box-shadow: 0px 0px 8px var(--dark-color);
-}
-
-.product-filters {
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 1rem;
-    padding: 1.5rem;
-    font-size: 0.85rem;
 }
 
 .filters {
@@ -111,4 +108,42 @@
     border-radius: 1rem;
     background-color: var(--light-color);
     padding: 0.4rem;
+}
+
+.filters-modal {
+    height: 100vh;
+    width: min(70vw, 250px);
+    background: var(--highlight-color);
+    position: fixed;
+    top: 0;
+    right: 0;
+    padding: 6rem 2rem 2rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.close-modal-button {
+    width: 100%;
+}
+
+@media(max-width: 800px) {
+    .products-section {
+        flex-direction: column;
+    }
+    
+    .product-filters {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        align-items: center;
+        width: 98%;
+        margin: 0 auto 1rem;
+        font-size: 0.8rem;
+        padding: 1rem 1.5rem;
+    }
+
+    .filters {
+        align-items: flex-end;
+    }
+
 }
