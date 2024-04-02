@@ -1,20 +1,11 @@
 import PropTypes from "prop-types";
-import { useEffect, useState } from "react";
+import { useContext, useState } from "react";
 import Filters from "./Filters";
+import { ShopContext } from "../ContextProvider";
 
 export default function ProductFilters({ handleOrder, handleFilters }) {
-  const [isMobile, setIsMobile] = useState(false);
   const [activeFilters, setActiveFilters] = useState(false);
-
-  useEffect(() => {
-    handleResize();
-
-    window.addEventListener("resize", handleResize);
-
-    return () => window.removeEventListener("resize", handleResize);
-  }, []);
-
-  const handleResize = () => setIsMobile(window.innerWidth <= 800);
+  const { isMobile } = useContext(ShopContext);
 
   const handleModal = () => {
     if (isMobile) {

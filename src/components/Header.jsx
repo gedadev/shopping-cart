@@ -5,7 +5,8 @@ import { ShopContext } from "../ContextProvider";
 import { useContext } from "react";
 
 export default function Header() {
-  const { getNumberOfProducts, getSubtotal } = useContext(ShopContext);
+  const { getNumberOfProducts, getSubtotal, isMobile } =
+    useContext(ShopContext);
 
   return (
     <header className="header">

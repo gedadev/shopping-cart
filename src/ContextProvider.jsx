@@ -7,6 +7,15 @@ export const ShopContext = createContext();
 export default function ContextProvider({ children }) {
   const [cartItems, setCartItems] = useState([]);
   const [productList, setProductList] = useState([]);
+  const [isMobile, setIsMobile] = useState(false);
+
+  useEffect(() => {
+    handleResize();
+
+    window.addEventListener("resize", handleResize);
+
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
 
   useEffect(() => {
     const getProducts = async () => {
@@ -19,6 +28,8 @@ export default function ContextProvider({ children }) {
     };
     getProducts();
   }, []);
+
+  const handleResize = () => setIsMobile(window.innerWidth <= 800);
 
   const addToCart = (product, productId) => {
     const cartObject = cartItems.find(({ id }) => id === productId);
@@ -77,6 +88,7 @@ export default function ContextProvider({ children }) {
         getSubtotal,
         removeItem,
         productList,
+        isMobile,
       }}
     >
       {children}
