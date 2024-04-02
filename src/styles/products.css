@@ -31,7 +31,7 @@
     flex-direction: column;
     justify-content: space-between;
     gap: 0.8rem;
-    width: 250px;
+    max-width: min(240px, 45vw);
     max-height: 500px;
     background-color: var(--highlight-color);
     padding: 1rem;
@@ -146,4 +146,13 @@
         align-items: flex-end;
     }
 
+    .products-container {
+        gap: 0.5rem;
+        padding: 0.5rem;
+    }
+
+    .product-card {
+        width: min(45vw );
+        height: auto;
+    }
 }
