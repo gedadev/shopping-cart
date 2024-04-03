@@ -3,7 +3,7 @@ import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
 import "../styles/header.css";
 import { ShopContext } from "../ContextProvider";
 import { useContext, useState } from "react";
-import Navbar from "./navbar";
+import Navbar from "./Navbar";
 
 export default function Header() {
   const { getNumberOfProducts, getSubtotal, isMobile } =
