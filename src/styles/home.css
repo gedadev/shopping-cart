@@ -11,6 +11,7 @@
 .top-products {
     max-width: clamp(1000px, 80%, 3000px);
     margin: 10vh auto;
+    padding: 0 1rem;
 }
 
 .top-products-container {
@@ -18,11 +19,14 @@
     display: flex;
     flex-grow: 1;
     justify-content: space-between;
+    gap: 1rem;
+    overflow: auto;
 }
 
 .categories {
     max-width: clamp(1000px, 80%, 3000px);
     margin: auto;
+    padding: 0 1rem;
 }
 
 .categories-container {
@@ -31,6 +35,8 @@
     display: flex;
     flex-grow: 1;
     justify-content: space-between;
+    gap: 1rem;
+    flex-wrap: wrap;
 }
 
 .category-card {
@@ -46,4 +52,14 @@
 .category-card > img {
     max-width: 200px;
     margin: 0.8rem 0;
+}
+
+@media(max-width: 800px) {
+    .categories-container {
+        justify-content: center;
+    }
+
+    .category-card > img {
+        max-width: 150px;
+    }
 }
