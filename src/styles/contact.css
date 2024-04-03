@@ -16,6 +16,7 @@
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     gap: 2rem 3rem;
+    max-width: 90vw;
 }
 
 .contact-container h2 {
@@ -84,4 +85,17 @@
 
 .return-button {
     min-width: 200px;
+}
+
+@media(max-width: 800px){
+    .contact-container {
+        display: flex;
+        flex-direction: column;
+        gap: 0.5rem;
+        padding: 2rem;
+    }
+
+    .social-media {
+        margin: 0.5rem 0 2rem;
+    }
 }
