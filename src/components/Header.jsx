@@ -2,34 +2,39 @@ import { Link } from "react-router-dom";
 import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
 import "../styles/header.css";
 import { ShopContext } from "../ContextProvider";
-import { useContext } from "react";
+import { useContext, useState } from "react";
+import Navbar from "./navbar";
 
 export default function Header() {
   const { getNumberOfProducts, getSubtotal, isMobile } =
     useContext(ShopContext);
+  const [menuActive, setMenuActive] = useState(false);
+
+  const activateMenu = () => {
+    setMenuActive(!menuActive);
+  };
 
   return (
     <header className="header">
-      <h1 className="branding">GedaShop</h1>
-      <nav className="navbar">
-        <ul>
-          <li>
-            <Link className="nav-link" to="/">
-              Home
-            </Link>
-          </li>
-          <li>
-            <Link className="nav-link" to="products">
-              Products
-            </Link>
-          </li>
-          <li>
-            <Link className="nav-link" to="contact">
-              Contact
-            </Link>
-          </li>
-        </ul>
-      </nav>
+      {isMobile ? (
+        <>
+          <div className="nav-menu" onClick={activateMenu}>
+            <span className="bar"></span>
+            <span className="bar"></span>
+            <span className="bar"></span>
+          </div>
+          {menuActive && (
+            <div className="mobile-nav" onClick={activateMenu}>
+              <Navbar />
+            </div>
+          )}
+        </>
+      ) : (
+        <>
+          <h1 className="branding">GedaShop</h1>
+          <Navbar />
+        </>
+      )}
       <div className="cart-icon-container">
         <span className="cart-products">{getNumberOfProducts()}</span>
         <Link className="cart-link" to="cart">

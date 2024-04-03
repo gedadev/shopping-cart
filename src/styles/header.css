@@ -21,6 +21,21 @@
     font-size: 1.2rem;
 }
 
+.mobile-nav {
+    background-color: var(--accent-color);
+    position: absolute;
+    margin: 8vh 0 0;
+    padding: 2rem;
+    top: 0;
+    left: 0;
+    border-radius: 0 0 0.5rem;
+}
+
+.mobile-nav .navbar > ul {
+    display: flex;
+    flex-direction: column;
+}
+
 .branding {
     font-family: 'Rubik Burned', system-ui;
     font-size: 2.5rem;
@@ -56,4 +71,13 @@
 
 .cart-price {
     font-size: 0.6rem;
+}
+
+.bar {
+    display: block;
+    width: 25px;
+    height: 3px;
+    margin: 5px auto;
+    transition: all .3s ease-in-out;
+    background-color: var(--dark-color);
 }
